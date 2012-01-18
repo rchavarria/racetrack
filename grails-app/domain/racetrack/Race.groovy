@@ -10,4 +10,8 @@ class Race {
     Integer maxRunners = 100000
     
     static constraints = {}
+    
+    static mapping = {
+        sort "startDate"
+    }
 }

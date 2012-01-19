@@ -1,5 +1,5 @@
 package racetrack
 
 class RegistrationController {
-    def scaffold = Race
+    def scaffold = true
 }

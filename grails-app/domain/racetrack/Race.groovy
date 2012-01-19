@@ -10,7 +10,7 @@ class Race {
     Integer maxRunners = 100000
     
     static constraints = {
-        name(blank:false, maxSize:50)
+        name(blank:false, maxSize:5)
         startDate()
         city()
         state(inList:["GA", "NC", "SC", "VA"])

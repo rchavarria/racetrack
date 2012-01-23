@@ -9,6 +9,8 @@ class Race {
     BigDecimal cost
     Integer maxRunners = 100000
     
+    static hasMany = [registrations:Registration]
+    
     static constraints = {
         name(blank:false, maxSize:50)
         startDate(validator: {return (it > new Date())})

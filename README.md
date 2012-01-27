@@ -82,6 +82,30 @@ This file contains three blocks:
 - `environments`: defines a specific `dataSource` for each environment: development, test 
 and production.
 
- 
+## Controllers
 
+The command `grails generate-all <domain class name>` generate the associated controller and
+GSPs pages (views) to a domain class. This command does the same as the combination of
+`grails generate-controller <domain class name>` and `grails generate-views <domain class name>`.
 
+These commands are different from `grails create-controller`. They generate a fully implemented
+controller while the later command creates and empty one.
+
+*tip* Command `grails generate-all <domain class name>` seems to need the complete name of the
+domain class that includes the package where de class is.
+
+### URLs and Controllers
+
+Grails uses a convention to form the URLs to call actions on controllers:
+
+`http://localhost:8080/racetrack/user/show/2` means:
+
+- racetrack: the name of the application. It can be changed in the file `application.properties`
+in the project root directory.
+- user: the name of the controller.
+- show: the name of the action. It matches exactly with closures in the controller.
+- 2: record id. Grails maps this value to `params.id` property, to be used in your controller code.
+
+*tip* Scopes: grails has four scopes: request, flash, session and application
+
+   

@@ -6,41 +6,45 @@ using this free pdf book: [Getting startted with Grails, InfoQ]
 
 # Commands and other stuff learned
 
-## Create an application
+### Create an application
 
 `grails create-app racetrack`
 
 Creates an application called racetrack. Then, you can see the application
 structure inside the `racetrack`directory.
 
-## Run your application
+### Run your application
 
 `grails [-Dserver.port=9090] run-app`
 
 Run the web application. By default, the server is listening at port 8080,
 you can change this port using the JVM option `-Dserver.port=<port>`
 
-## Where grails store information about your projects
+### Where grails store information about your projects
 
 In the directory `~/.grails/<grails version>/projects/<project name>`
 
-## Clean your project
+### Clean your project
 
 `grails clean`
 
-## Create a domain class
+### Create a domain class
 
 `grails create-domain-class <domain class name>`
 
 Domain classes are where the data of your application is stored. Domain classes
 are mapped to tables in the database.
 
-## Create a controller
+### Create a controller
 
 `grails create-controller <controller name>`
 
 Controllers are classes where your bussiness logic lives. They are the C in the 
 well known MVC model.
+
+### Create a custom taglib
+
+`grails create-tag-lib <taglib name>`
 
 ## How to validate your data
 
@@ -108,4 +112,31 @@ in the project root directory.
 
 *tip* Scopes: grails has four scopes: request, flash, session and application
 
-   
+## GSP's pages
+
+### GSP tags
+
+You can call taglibs using `<g:` or `${}`
+
+`<g:each>` iterates over a collection of items.
+`<g:link>` creates a link, e.g. to a named controller
+`<g:resource>` creates a link to a file
+`<g:if test="condition">` 
+`<g:render template="/layouts/header" />` renders the partial template that lives in the file
+layouts/_header.gsp
+
+### SiteMesh
+
+Messes up two GSP pages to create a only one HTML page.
+
+Grails uses SiteMesh to merge common, shared elements with individual GSPs using the `<g:layoutHead>` 
+and `<g:layoutBody>` plug-points.   
+
+### Partial templates
+
+GSP pages that starts with an underscore. It means that the GSP page is not a complete page, only
+a reusable part of it.
+
+### Custom taglibs
+
+You can create one with `grails create-tag-lib <taglib name>`.

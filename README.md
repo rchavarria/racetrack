@@ -140,3 +140,9 @@ a reusable part of it.
 ### Custom taglibs
 
 You can create one with `grails create-tag-lib <taglib name>`.
+
+The command creates a <tablib name>TagLib.groovy file into `grails-app/taglib` directory. You can 
+define closures inside this file. Each closure will be a taglib. Let's say, you create a taglig in
+a file named `FooterTagLib.groovy` called `thisYear`. The GSP code to use this taglib is:
+`<g:thisYear />`, so easy.
+

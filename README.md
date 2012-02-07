@@ -46,6 +46,10 @@ well known MVC model.
 
 `grails create-tag-lib <taglib name>`
 
+### Intall all templates to customize scaffolding of controllers, views, and so on
+
+`grails install-templates`
+
 ## How to validate your data
 
 In a domain class, you can define a static closure called constraints. Inside this
@@ -146,3 +150,20 @@ define closures inside this file. Each closure will be a taglib. Let's say, you 
 a file named `FooterTagLib.groovy` called `thisYear`. The GSP code to use this taglib is:
 `<g:thisYear />`, so easy.
 
+### Customizing default templates
+
+Command `grails install-templates`.
+
+The template for all controllers is the file `src/templates/artifacts/Controller.groovy` and the 
+template for all domain classes is the file `src/templates/artifacts/DomainClass.groovy`.
+
+`artifacts` directory is for the `create-*` commands, while `scaffolding` directory is for 
+customizing GSP pages.
+
+Editing the `excludedProps` in `src/templates/scaffolding/create.gsp` and `edit.gsp` you can exclude
+the properties of your domain classes to be shown in create and edit views. I've found `excludedProps`
+in `_form.gsp` file under `scaffolding` directory, I'm using a different version of grails that the
+version of the tutorial.
+
+In a template, the code inside `test` in `` is executed during *run-time*, while the code in `id` is
+executed during *generation-time*.

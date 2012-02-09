@@ -50,6 +50,13 @@ well known MVC model.
 
 `grails install-templates`
 
+### Testing the application
+
+`grails test-app` launches all tests
+`grails test-app -unit` launches unit tests
+`grails test-app -integration` launches integration tests
+`grails test-app User -unit` launches unit tests for domain class User
+
 ## How to validate your data
 
 In a domain class, you can define a static closure called constraints. Inside this
@@ -171,4 +178,12 @@ executed during *generation-time*.
 ## Security, authentication and authorization
 
 Whithin a domain class, use `static transients` list to tell GORM not to persist properties (or
-methods like getters/setters) into a database. 
+methods like getters/setters) into a database.
+
+### Unit tests, metaprogramming and domain classes
+
+The `mockForConstraintsTest()` method tells the unit test to metaprogram the methods for 
+constraints evaluation onto a domain class. On the other hand, `mockDomain()` takes mocking one step 
+further, it allows you to mock out the entire database layer.
+
+ 

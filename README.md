@@ -167,3 +167,8 @@ version of the tutorial.
 
 In a template, the code inside `test` in `` is executed during *run-time*, while the code in `id` is
 executed during *generation-time*.
+
+## Security, authentication and authorization
+
+Whithin a domain class, use `static transients` list to tell GORM not to persist properties (or
+methods like getters/setters) into a database. 

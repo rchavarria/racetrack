@@ -100,4 +100,10 @@ class UserController {
             redirect(action: "show", id: params.id)
         }
     }
+    
+    def login() {
+        // empty closure. the page login.gsp will be shown after calling this closure    
+    }
+    def logout() {}
+    def authenticate() {}
 }

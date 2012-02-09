@@ -105,7 +105,11 @@ class UserController {
         // empty closure. the page login.gsp will be shown after calling this closure    
     }
     
-    def logout() {}
+    def logout() {
+        flash.message = "Goodbye ${session.user.login}"
+        session.user = null
+        redirect(action: "login")
+    }
     
     def authenticate() {
         def user =

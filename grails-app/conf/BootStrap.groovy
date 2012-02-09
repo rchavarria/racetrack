@@ -1,8 +1,9 @@
+import grails.util.Environment
+
 import racetrack.Race
 import racetrack.Registration
 import racetrack.Runner
 import racetrack.User
-
 
 class BootStrap {
 

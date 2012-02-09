@@ -104,6 +104,21 @@ class UserController {
     def login() {
         // empty closure. the page login.gsp will be shown after calling this closure    
     }
+    
     def logout() {}
-    def authenticate() {}
+    
+    def authenticate() {
+        def user =
+                User.findByLoginAndPassword(params.login, params.password)
+                
+        if(user){
+            session.user = user
+            flash.message = "Hello ${user.login}!"
+            redirect(controller: "race", action: "list")
+            
+        }else{
+            flash.message = "Sorry, ${params.login}. Please try again."
+            redirect(action: "login")
+        }
+    }
 }

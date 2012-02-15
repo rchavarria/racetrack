@@ -19,6 +19,7 @@ class BootStrap {
                                      password:"wordpass",
                                      role:"admin")
                 admin.save()
+                
                 if(admin.hasErrors()){
                     println admin.errors
                 }

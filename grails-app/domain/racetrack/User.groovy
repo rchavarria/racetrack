@@ -20,4 +20,8 @@ class User {
     boolean isAdmin(){
         role == "admin"
     }
+    
+    def beforeInsert = {
+        password = password.encodeAsSHA()
+    }
 }

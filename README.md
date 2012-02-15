@@ -57,6 +57,10 @@ well known MVC model.
 `grails test-app -integration` launches integration tests
 `grails test-app User -unit` launches unit tests for domain class User
 
+### Create filters
+
+`grails create-filters <filter>` creates a filter to intercept request application wide 
+
 ## How to validate your data
 
 In a domain class, you can define a static closure called constraints. Inside this
@@ -186,4 +190,19 @@ The `mockForConstraintsTest()` method tells the unit test to metaprogram the met
 constraints evaluation onto a domain class. On the other hand, `mockDomain()` takes mocking one step 
 further, it allows you to mock out the entire database layer.
 
- 
+### Creating Codecs
+
+Create a file that ends with `Codec` in the `grails-app/utils` directory. Let's say, you create a file
+named `UnderscoreCodec.groovy`, grails will automatically metaprogram these two methods in the 
+String class: `String.encodeAsUnderscore()` and `String.decodeUnderscore()`. Cool!!
+
+### Interceptors
+
+In the UserController class, you can create a closure called `beforeInterceptor` to add an interceptor 
+that is called before every controller action.
+
+### Filters
+
+The `beforeInterceptor` allows you to intercept requests on a per-controller basis. Filters allow you to 
+do the same thing on an applicationwide.
+basis.

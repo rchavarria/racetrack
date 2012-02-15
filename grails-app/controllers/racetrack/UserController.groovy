@@ -6,6 +6,13 @@ class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
+    def beforeInterceptor = [action:this.&debug]
+    
+    def debug(){
+        println "DEBUG: ${actionUri} called."
+        println "DEBUG: ${params}"
+    }
+
     def index() {
         redirect(action: "list", params: params)
     }
@@ -115,9 +122,8 @@ class UserController {
     
     def authenticate() {
         def user =
-                User.findByLoginAndPassword(params.login, 
-                                            params.password.encodeAsSHA())
-                
+                User.findByLoginAndPassword(params.login, params.password.encodeAsSHA())
+
         if(user){
             session.user = user
             flash.message = "Hello ${user.login}!"

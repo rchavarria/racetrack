@@ -6,11 +6,23 @@ class UserController {
 
     static allowedMethods = [save: "POST", update: "POST", delete: "POST"]
 
-    def beforeInterceptor = [action:this.&debug]
+    def beforeInterceptor = [action:this.&auth,
+                            except:[
+                                'login',
+                                'logout',
+                                'authenticate'
+                            ]]
     
-    def debug(){
-        println "DEBUG: ${actionUri} called."
-        println "DEBUG: ${params}"
+    def auth() {
+        if(!session.user) {
+            redirect(controller:"user", action:"login")
+            return false
+        }
+        if(!session.user.admin){
+            flash.message = "Tsk tsk—admins only"
+            redirect(controller:"race", action:"list")
+            return false
+        }
     }
 
     def index() {

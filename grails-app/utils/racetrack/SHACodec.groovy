@@ -1,3 +1,5 @@
+package racetrack
+
 import java.security.MessageDigest
 
 class SHACodec{

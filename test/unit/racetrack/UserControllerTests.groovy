@@ -2,11 +2,22 @@ package racetrack
 
 import org.junit.*
 import grails.test.mixin.*
+import racetrack.SHACodec
+import org.codehaus.groovy.grails.plugins.codecs.*
 
 @TestFor(UserController)
 @Mock(User)
 class UserControllerTests {
 
+    void setUp() {
+        String.metaClass.encodeAsBase64 = {->
+            Base64Codec.encode(delegate)
+        }
+        String.metaClass.encodeAsSHA = {->
+            SHACodec.encode(delegate)
+        }
+    }
+    
     void testIndex() {
         controller.index()
         assertEquals "/user/list",
@@ -27,7 +38,7 @@ class UserControllerTests {
     
     void testSuccessfulAuthenticate(){
         def jdoe = new User(login:"jdoe",
-                            password:"password")
+                            password:"password".encodeAsSHA())
         jdoe.save(flush: true)
         
         controller.params.login = "jdoe"
@@ -39,7 +50,7 @@ class UserControllerTests {
     
     void testWrongAuthenticate(){
         def jdoe = new User(login:"jdoe",
-                            password:"password")
+                            password:"password".encodeAsSHA())
         jdoe.save(flush: true)
         
         controller.params.login = "jdoe"

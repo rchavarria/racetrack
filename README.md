@@ -61,6 +61,10 @@ well known MVC model.
 
 `grails create-filters <filter>` creates a filter to intercept request application wide 
 
+### Install plugins
+
+`grails install-plugin <plugin name>` search, download and install a plugin in your grails project
+
 ## How to validate your data
 
 In a domain class, you can define a static closure called constraints. Inside this
@@ -206,3 +210,19 @@ that is called before every controller action.
 The `beforeInterceptor` allows you to intercept requests on a per-controller basis. Filters allow you to 
 do the same thing on an applicationwide.
 basis.
+
+## Plugins
+
+To install a plugin, e.g., called `searchable`, run the command `grails install-plugin searchable`.
+
+This happened to me: I'm not able to see the directory where grails is supposed to install plugins:
+`C:/Users/rchavarria/.grails/2.0.0/...`. To fix this and to be able to see plugin files, I had to modify
+`grails-app/conf/BuildConfig.groovy` and add the following property `grails.project.plugins.dir='plugins'`.
+Now, all plugins are installed project-wide.
+
+## Services
+
+From the tutorial: 'Controllers are usually focused on the care and feeding of a single domain class. 
+Services, on the other hand, are places to put business logic and behavior that is applicable to 
+more than one domain class'.
+

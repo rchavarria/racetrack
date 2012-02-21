@@ -9,6 +9,9 @@ class Race {
     BigDecimal cost
     Integer maxRunners = 100000
     
+    // make this domain class searchable
+    static searchable = true
+    
     static hasMany = [registrations:Registration]
     
     static constraints = {

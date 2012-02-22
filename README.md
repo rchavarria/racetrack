@@ -226,3 +226,7 @@ From the tutorial: 'Controllers are usually focused on the care and feeding of a
 Services, on the other hand, are places to put business logic and behavior that is applicable to 
 more than one domain class'.
 
+## URL mappings
+
+One can redefine URL mappings in the file `grails-app/conf/UrlMapping.groovy`.
+

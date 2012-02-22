@@ -230,3 +230,12 @@ more than one domain class'.
 
 One can redefine URL mappings in the file `grails-app/conf/UrlMapping.groovy`.
 
+## Production deployment checklist
+
+- `DataSource.groovy`: production datasource points to a different database from development datasource
+- `BootStrap.groovy`: chech that we only create Users, Races, ..., on development mode
+- `Config.groovy`: check `environment` block. the properties defined here will be accessible 
+via: `grailsApplication.config.<property>`
+- `application.properties`: modify accordingly `app.name` and `app.version`
+
+- 

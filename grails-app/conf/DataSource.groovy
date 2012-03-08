@@ -26,7 +26,12 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE"
+            dialect = "org.hibernate.dialect.MySQL5InnoDBDialect"
+            driverClassName = "com.mysql.jdbc.Driver"
+//            url = "jdbc:h2:prodDb;MVCC=TRUE"
+            url = "jdbc:mysql://mysql-rchavarria-racetrack.jelastic.com/db_racetrack"
+            username = "racetrack"
+            password = "racetrack"
             pooled = true
             properties {
                maxActive = -1

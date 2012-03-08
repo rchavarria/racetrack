@@ -14,6 +14,7 @@ class BootStrap {
         
         switch(env){
             case "development":
+            case "production" : 
             
                 def admin = new User(login:"admin",
                                      password:"wordpass",
@@ -100,8 +101,6 @@ class BootStrap {
                     println reg.errors
                 }
                 break
-                
-            case "production" : break
         }
     }
 
